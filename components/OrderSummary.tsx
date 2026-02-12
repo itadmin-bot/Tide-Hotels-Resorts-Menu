@@ -1,6 +1,6 @@
 
 import React, { useMemo } from 'react';
-import { X, Plus, Minus, Info } from 'lucide-react';
+import { X, Plus, Minus, Info, Trash2 } from 'lucide-react';
 import { MENU_DATA } from '../constants.tsx';
 
 interface OrderSummaryProps {
@@ -62,7 +62,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ orderItems, onClose, onUpda
                   <p className="text-xs text-gold font-medium mt-1">{item.price} each</p>
                 </div>
                 
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-2">
                   <div className="flex items-center bg-slate-100 dark:bg-navy p-1 rounded-full">
                     <button 
                       onClick={() => onUpdateQuantity(item.id!, -1)}
@@ -80,6 +80,13 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({ orderItems, onClose, onUpda
                       <Plus size={14} />
                     </button>
                   </div>
+                  <button 
+                    onClick={() => onUpdateQuantity(item.id!, -item.quantity!)}
+                    className="p-2 text-red-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full transition-all"
+                    title="Remove item"
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               </div>
             ))
