@@ -4,6 +4,7 @@ import WelcomeScreen from './components/WelcomeScreen.tsx';
 import MenuDisplay from './components/MenuDisplay.tsx';
 import Header from './components/Header.tsx';
 import FloatingActions from './components/FloatingActions.tsx';
+import OrderSummary from './components/OrderSummary.tsx';
 import { CategoryType, MenuItem } from './types.ts';
 import { MENU_DATA } from './constants.tsx';
 
@@ -15,6 +16,10 @@ const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSection, setActiveSection] = useState<MenuSection>('Food');
   const [selectedCategory, setSelectedCategory] = useState<CategoryType | 'All'>('All');
+  
+  // Order selection state: Item ID -> Quantity
+  const [orderItems, setOrderItems] = useState<Record<string, number>>({});
+  const [showOrderSummary, setShowOrderSummary] = useState(false);
 
   const foodCategories = [
     CategoryType.BREAKFAST,
@@ -54,6 +59,18 @@ const App: React.FC = () => {
   const handleSectionChange = (section: MenuSection) => {
     setActiveSection(section);
     setSelectedCategory('All');
+  };
+
+  const updateItemQuantity = (id: string, delta: number) => {
+    setOrderItems(prev => {
+      const current = prev[id] || 0;
+      const next = Math.max(0, current + delta);
+      if (next === 0) {
+        const { [id]: _, ...rest } = prev;
+        return rest;
+      }
+      return { ...prev, [id]: next };
+    });
   };
 
   const filteredMenu = useMemo(() => {
@@ -105,6 +122,8 @@ const App: React.FC = () => {
           items={filteredMenu} 
           selectedCategory={selectedCategory} 
           onClearFilters={handleClearFilters}
+          orderItems={orderItems}
+          onUpdateQuantity={updateItemQuantity}
         />
         
         <footer className="mt-12 py-8 border-t border-slate-200 dark:border-navy-light text-center">
@@ -125,7 +144,18 @@ const App: React.FC = () => {
         </footer>
       </main>
 
-      <FloatingActions />
+      <FloatingActions 
+        orderCount={Object.values(orderItems).reduce((a, b) => a + b, 0)}
+        onShowOrder={() => setShowOrderSummary(true)}
+      />
+
+      {showOrderSummary && (
+        <OrderSummary 
+          orderItems={orderItems} 
+          onClose={() => setShowOrderSummary(false)}
+          onUpdateQuantity={updateItemQuantity}
+        />
+      )}
     </div>
   );
 };

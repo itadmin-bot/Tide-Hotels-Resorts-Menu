@@ -1,15 +1,23 @@
 
 import React, { useState } from 'react';
 import { MenuItem, CategoryType } from '../types.ts';
-import { ChevronDown, ChevronUp, SearchX } from 'lucide-react';
+import { ChevronDown, ChevronUp, SearchX, Plus, Minus } from 'lucide-react';
 
 interface MenuDisplayProps {
   items: MenuItem[];
   selectedCategory: CategoryType | 'All';
   onClearFilters: () => void;
+  orderItems: Record<string, number>;
+  onUpdateQuantity: (id: string, delta: number) => void;
 }
 
-const MenuDisplay: React.FC<MenuDisplayProps> = ({ items, selectedCategory, onClearFilters }) => {
+const MenuDisplay: React.FC<MenuDisplayProps> = ({ 
+  items, 
+  selectedCategory, 
+  onClearFilters,
+  orderItems,
+  onUpdateQuantity
+}) => {
   const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>(() => {
     const initial: Record<string, boolean> = {};
     Object.values(CategoryType).forEach(cat => initial[cat] = true);
@@ -70,24 +78,61 @@ const MenuDisplay: React.FC<MenuDisplayProps> = ({ items, selectedCategory, onCl
           {expandedCategories[category] && (
             <>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {catItems.map((item) => (
-                  <div 
-                    key={item.id} 
-                    className="bg-white dark:bg-navy-light p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-navy hover:shadow-md hover:border-gold/30 dark:hover:border-gold/30 transition-all group"
-                  >
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="font-serif text-lg font-bold text-navy dark:text-white group-hover:text-gold transition-colors">
-                        {item.name}
-                      </h3>
-                      <span className="text-gold font-bold text-sm bg-gold/10 px-2 py-1 rounded-lg">
-                        {item.price}
-                      </span>
+                {catItems.map((item) => {
+                  const quantity = orderItems[item.id] || 0;
+                  return (
+                    <div 
+                      key={item.id} 
+                      className={`bg-white dark:bg-navy-light p-5 rounded-2xl shadow-sm border transition-all group relative overflow-hidden ${
+                        quantity > 0 
+                          ? 'border-gold shadow-md shadow-gold/10' 
+                          : 'border-slate-100 dark:border-navy hover:shadow-md hover:border-gold/30'
+                      }`}
+                    >
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="font-serif text-lg font-bold text-navy dark:text-white group-hover:text-gold transition-colors pr-2">
+                          {item.name}
+                        </h3>
+                        <div className="flex flex-col items-end">
+                          <span className="text-gold font-bold text-sm bg-gold/10 px-2 py-1 rounded-lg mb-2 whitespace-nowrap">
+                            {item.price}
+                          </span>
+                        </div>
+                      </div>
+                      <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                        {item.description}
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                         <div className="flex items-center space-x-3 bg-slate-50 dark:bg-navy p-1 rounded-full border border-slate-200 dark:border-navy-light">
+                            <button 
+                              onClick={() => onUpdateQuantity(item.id, -1)}
+                              className={`p-1.5 rounded-full transition-all ${quantity > 0 ? 'text-gold hover:bg-gold/10' : 'text-slate-300 pointer-events-none'}`}
+                            >
+                              <Minus size={16} />
+                            </button>
+                            <span className={`w-6 text-center font-bold text-sm ${quantity > 0 ? 'text-navy dark:text-white' : 'text-slate-400'}`}>
+                              {quantity}
+                            </span>
+                            <button 
+                              onClick={() => onUpdateQuantity(item.id, 1)}
+                              className="p-1.5 rounded-full text-gold hover:bg-gold/10 transition-all"
+                            >
+                              <Plus size={16} />
+                            </button>
+                         </div>
+                         {quantity === 0 && (
+                           <button 
+                            onClick={() => onUpdateQuantity(item.id, 1)}
+                            className="text-[10px] font-bold text-gold uppercase tracking-tighter hover:underline"
+                           >
+                             Add to Order
+                           </button>
+                         )}
+                      </div>
                     </div>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
               {category === CategoryType.NIGERIAN_SOUPS && (
                 <div className="mt-4 p-4 bg-gold/5 border border-gold/20 rounded-xl text-center">
