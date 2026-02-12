@@ -73,71 +73,75 @@ export const MENU_DATA: MenuItem[] = [
   { id: 'd3', name: 'Mixed Fruit Crumble & Ice Cream', price: 'N9,000', description: 'Seasonal fruits in a flaky crumble, served warm with vanilla ice cream.', category: CategoryType.DESSERTS },
   { id: 'd4', name: 'Fruit salad', price: 'N7,000', description: 'Mix fruits served with honey and lemon sauce', category: CategoryType.DESSERTS },
 
-  // DRINKS - SOFT DRINKS & JUICES
+  // COCKTAILS (All N8,199)
+  { id: 'ck1', name: 'Long Island Ice Tea', price: 'N8,199', description: 'Vodka, Gin, Tequila, Rum, Tripple sec, Coke and lemon juice.', category: CategoryType.COCKTAILS },
+  { id: 'ck2', name: 'Margarita', price: 'N8,199', description: 'Tequila, Tripple sec, freshly squeezed lime juice.', category: CategoryType.COCKTAILS },
+  { id: 'ck3', name: 'Martini', price: 'N8,199', description: 'Gin, Vermouth.', category: CategoryType.COCKTAILS },
+  { id: 'ck4', name: 'Negroni', price: 'N8,199', description: 'Gin, Vermouth rose and Campari.', category: CategoryType.COCKTAILS },
+  { id: 'ck5', name: 'Old Fashioned', price: 'N8,199', description: 'Whiskey, bitters, simple syrup.', category: CategoryType.COCKTAILS },
+  { id: 'ck6', name: 'Whiskey Sour', price: 'N8,199', description: 'Whiskey, fresh lemon juice, bar syrup, egg white.', category: CategoryType.COCKTAILS },
+  { id: 'ck7', name: 'Mojito', price: 'N8,199', description: 'White rum, simple syrup, fresh lime, mint leaf and mojito soda.', category: CategoryType.COCKTAILS },
+  { id: 'ck8', name: 'Sex On the Beach', price: 'N8,199', description: 'Vodka, Peach schnapps, Cranberry juice, orange juice, dash of grenadine and fresh lemon.', category: CategoryType.COCKTAILS },
+  { id: 'ck9', name: 'Daiquiri', price: 'N8,199', description: 'Rum, fresh lime or lemon juice, simple syrup.', category: CategoryType.COCKTAILS },
+  { id: 'ck10', name: 'Cosmopolitan', price: 'N8,199', description: 'Vodka, triple sec, cranberry juice, lime juice.', category: CategoryType.COCKTAILS },
+  { id: 'ck11', name: 'Pina Colada', price: 'N8,199', description: 'Rum, cream of coconut, pineapple, coconut rum.', category: CategoryType.COCKTAILS },
+
+  // TIDE SIGNATURES (All N9,999)
+  { id: 'ts1', name: 'Tide Ignite', price: 'N9,999', description: 'Vodka, fresh tomatoes juice, ginger, fresh lemon and bar syrup.', category: CategoryType.TIDE_SIGNATURES },
+  { id: 'ts2', name: 'Tide Special Aperitif', price: 'N9,999', description: 'Fresh orange juice, Campari and Gin.', category: CategoryType.TIDE_SIGNATURES },
+  { id: 'ts3', name: 'Tide Rush', price: 'N9,999', description: 'Vodka, Sweet red wine, Tripple sec and a dash of lemon juice.', category: CategoryType.TIDE_SIGNATURES },
+
+  // MOCKTAILS (All N6,199 except Strawberry)
+  { id: 'mk1', name: 'Virgin Pina Colada', price: 'N6,199', description: 'Fresh pineapple juice, coconut milk, simple syrup.', category: CategoryType.MOCKTAILS },
+  { id: 'mk2', name: 'Virgin Mojito', price: 'N6,199', description: 'Mint leaf, lemon juice, mojito soda, brown sugar.', category: CategoryType.MOCKTAILS },
+  { id: 'mk3', name: 'Blue Lagoon', price: 'N6,199', description: 'Blue curacao, lemon juice, sprite.', category: CategoryType.MOCKTAILS },
+  { id: 'mk4', name: 'Chapman', price: 'N6,199', description: 'Fanta, sprite, orange juice, grenadine, fresh or lemon juice.', category: CategoryType.MOCKTAILS },
+  { id: 'mk5', name: 'Virgin Strawberry Daiquiri', price: 'N7,050', description: 'Strawberry fruit, dash of lemon or lime juice, simple syrup.', category: CategoryType.MOCKTAILS },
+
+  // SHOTS
+  { id: 'sh1', name: 'Tequila shot', price: 'N3,000', description: 'Premium silver/gold tequila.', category: CategoryType.SHOTS },
+  { id: 'sh2', name: 'Vodka shot', price: 'N3,000', description: 'Triple distilled premium vodka.', category: CategoryType.SHOTS },
+  { id: 'sh3', name: 'Gin shot', price: 'N3,000', description: 'London dry gin.', category: CategoryType.SHOTS },
+  { id: 'sh4', name: 'Flaming Dr Pepper', price: 'N5,000', description: 'Amaretto, Rum.', category: CategoryType.SHOTS },
+  { id: 'sh5', name: 'Flaming Jesus', price: 'N5,000', description: 'Vodka, grenadine, lime, rum.', category: CategoryType.SHOTS },
+
+  // MILKSHAKES & SMOOTHIES
+  { id: 'ms1', name: 'Express Milkshake Choice', price: 'N8,250', description: 'Choice of: Banana, Strawberry, Vanilla, Chocolate, or Oreo.', category: CategoryType.MILKSHAKES },
+  { id: 'sm1', name: 'Zenza Dream Smoothie', price: 'N4,000', description: 'Banana, pineapple. Fuse with whipping cream.', category: CategoryType.SMOOTHIES },
+  { id: 'sm2', name: 'Minty Zenza Smoothie', price: 'N4,000', description: 'Apple, orange, pineapple and mint leaf.', category: CategoryType.SMOOTHIES },
+  { id: 'sm3', name: 'Freshly Squeezed Juice', price: 'N4,000', description: 'Choice of: Orange, Watermelon, Pineapple, Apple, or Bitroot.', category: CategoryType.SMOOTHIES },
+
+  // SOFT DRINKS
   { id: 'ds1', name: 'Water (60cl)', price: 'N600', description: 'Premium bottled water.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds2', name: 'Soft Drinks', price: 'N2,000', description: 'Selection of carbonated sodas.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds3', name: 'Amstel Malt', price: 'N2,000', description: 'Premium malted beverage.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds4', name: 'Chi Ice Tea', price: 'N5,000', description: 'Refreshing iced tea beverage.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds5', name: 'Chivita', price: 'N4,000', description: 'Premium fruit juice selection.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds6', name: 'Pack Juice', price: 'N3,000', description: 'Standard packaged juice.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds7', name: 'Cranberry Juice', price: 'N3,500', description: 'Premium cranberry fruit juice.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds8', name: 'Red Bull', price: 'N5,000', description: 'Premium energy drink.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds9', name: 'Power horse (Small)', price: 'N2,700', description: 'Energy drink in small size.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds10', name: 'Power horse (Big)', price: 'N3,000', description: 'Energy drink in large size.', category: CategoryType.SOFT_DRINKS },
-  { id: 'ds11', name: 'Black Bullet', price: 'N5,000', description: 'Strong energy beverage.', category: CategoryType.SOFT_DRINKS },
+  { id: 'ds2', name: 'Fizzy (Soft Drinks)', price: 'N1,000', description: 'Coke, Sprite, Fanta, Schweppes, or Malt.', category: CategoryType.SOFT_DRINKS },
+  { id: 'ds3', name: 'Pack Juice (Chivita/Other)', price: 'N3,500', description: 'Orange, Pineapple, Mango, or Apple juice.', category: CategoryType.SOFT_DRINKS },
+  { id: 'ds4', name: 'Cranberry Juice (Strobe)', price: 'N12,500', description: 'Premium cranberry juice.', category: CategoryType.SOFT_DRINKS },
+  { id: 'ds5', name: 'Red Bull Energy', price: 'N3,500', description: 'Premium energy drink.', category: CategoryType.SOFT_DRINKS },
+  { id: 'ds6', name: 'Power Horse Energy', price: 'N3,500', description: 'Energy beverage.', category: CategoryType.SOFT_DRINKS },
+  { id: 'ds7', name: 'Black Bullet Energy', price: 'N3,500', description: 'Strong energy drink.', category: CategoryType.SOFT_DRINKS },
 
-  // DRINKS - BEERS & STOUTS
-  { id: 'db1', name: 'Heineken', price: 'N3,000', description: 'Premium international lager.', category: CategoryType.BEERS_STOUTS },
+  // BEERS
+  { id: 'db1', name: 'Heineken', price: 'N2,000', description: 'Premium international lager.', category: CategoryType.BEERS_STOUTS },
   { id: 'db2', name: 'Budweiser', price: 'N2,700', description: 'Premium American lager.', category: CategoryType.BEERS_STOUTS },
-  { id: 'db3', name: 'Medium stout', price: 'N2,700', description: 'Rich and dark brewed stout.', category: CategoryType.BEERS_STOUTS },
-  { id: 'db4', name: 'Trophy', price: 'N2,500', description: 'Classic lager beer.', category: CategoryType.BEERS_STOUTS },
-  { id: 'db5', name: 'Desperados', price: 'N3,000', description: 'Tequila flavored beer.', category: CategoryType.BEERS_STOUTS },
-  { id: 'db6', name: 'Smirnoff double black', price: 'N3,000', description: 'Ready-to-drink vodka blend.', category: CategoryType.BEERS_STOUTS },
-  { id: 'db7', name: 'Legend', price: 'N2,500', description: 'Premium extra stout.', category: CategoryType.BEERS_STOUTS },
-  { id: 'db8', name: 'Orijin Bitters', price: 'N2,500', description: 'Herb-infused alcoholic bitters.', category: CategoryType.BEERS_STOUTS },
-  { id: 'db9', name: 'Guiness Stout', price: 'N4,000', description: 'Classic premium dark stout.', category: CategoryType.BEERS_STOUTS },
+  { id: 'db3', name: 'Desperados', price: 'N1,500', description: 'Tequila flavored beer.', category: CategoryType.BEERS_STOUTS },
+  { id: 'db4', name: 'Smirnoff Double Black', price: 'N1,500', description: 'Ready-to-drink vodka blend.', category: CategoryType.BEERS_STOUTS },
 
-  // DRINKS - WINES
-  { id: 'dw1', name: 'Carlo Rossi Red/White/Sweet', price: 'N19,000', description: 'Premium table wine selection.', category: CategoryType.WINES },
-  { id: 'dw2', name: 'Four Cousins Red/White', price: 'N15,000', description: 'Popular South African blend.', category: CategoryType.WINES },
-  { id: 'dw3', name: 'Agor wine', price: 'N20,000', description: 'Rich red wine selection.', category: CategoryType.WINES },
+  // WINES
+  { id: 'dw1', name: 'Carlo Rossi Wine Selection', price: 'N19,000', description: 'Red, White, or Sweet selection.', category: CategoryType.WINES },
   { id: 'dw4', name: 'Nederburg Wine', price: 'N40,000', description: 'Luxury vintage wine.', category: CategoryType.WINES },
-  { id: 'dw5', name: 'Escudo Rojo', price: 'N40,000', description: 'Chilean luxury red wine.', category: CategoryType.WINES },
-  { id: 'dw6', name: 'Sweet lips', price: 'N14,000', description: 'Light sweet wine selection.', category: CategoryType.WINES },
-  { id: 'dw7', name: 'Declan', price: 'N15,500', description: 'Premium red wine.', category: CategoryType.WINES },
-  { id: 'dw8', name: '4th street', price: 'N18,000', description: 'Popular sweet wine selection.', category: CategoryType.WINES },
-  { id: 'dw9', name: 'Drostdy-Hof Big', price: 'N23,000', description: 'Premium large format wine.', category: CategoryType.WINES },
-  { id: 'dw10', name: 'Martini Rosso', price: 'N27,000', description: 'Italian sweet red vermouth.', category: CategoryType.WINES },
   { id: 'dw11', name: 'J&W (Non-Alcoholic)', price: 'N12,000', description: 'Premium sparkling non-alcoholic wine.', category: CategoryType.WINES },
-  { id: 'dw12', name: 'Chamdor (Non-Alcoholic)', price: 'N11,000', description: 'Classic sparkling grape juice.', category: CategoryType.WINES },
-  { id: 'dw13', name: 'Veleta (Non-Alcoholic)', price: 'N8,000', description: 'Refreshing sparkling fruit drink.', category: CategoryType.WINES },
 
-  // DRINKS - SPIRITS & LIQUEURS
+  // WHISKEY & SPIRITS
   { id: 'dsp1', name: 'Jameson Green Irish', price: 'N48,000', description: 'Triple-distilled Irish whiskey.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp2', name: 'Jameson Black Barrel', price: 'N79,500', description: 'Premium charred barrel Irish whiskey.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp3', name: 'Jack Daniels', price: 'N56,000', description: 'Classic Tennessee whiskey.', category: CategoryType.SPIRITS_LIQUEURS },
   { id: 'dsp4', name: 'Black Label', price: 'N79,000', description: 'Johnnie Walker iconic scotch blend.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp5', name: 'Glen 12 yrs', price: 'N120,000', description: 'Aged single malt scotch whiskey.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp6', name: 'Glen 15 yrs', price: 'N174,999', description: 'Premium aged single malt.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp7', name: 'Glen 18 yrs', price: 'N276,425', description: 'Luxury aged single malt.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp8', name: 'Hennessy XO', price: 'N790,000', description: 'Extra Old luxury cognac.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp9', name: 'Hennessy VSOP', price: 'N205,000', description: 'Very Superior Old Pale cognac.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp10', name: 'Hennessy VS', price: 'N180,000', description: 'Very Special premium cognac.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp11', name: 'Martell Blue Swift', price: 'N185,250', description: 'Cognac finished in bourbon casks.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp12', name: 'Martell VSOP', price: 'N94,000', description: 'Elegant and balanced VSOP cognac.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp13', name: 'Remy Martins XO', price: 'N675,625', description: 'Luxury fine champagne cognac.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp14', name: 'Remy Martins VSOP', price: 'N158,000', description: 'Exquisite VSOP cognac.', category: CategoryType.SPIRITS_LIQUEURS },
+  { id: 'dsp_bl', name: 'Blue Label', price: 'N711,000', description: 'Ultra-luxury Johnnie Walker blend.', category: CategoryType.SPIRITS_LIQUEURS },
   { id: 'dsp15', name: 'Hendricks Gin', price: 'N85,000', description: 'Premium cucumber and rose infused gin.', category: CategoryType.SPIRITS_LIQUEURS },
   { id: 'dsp16', name: 'Bombay Sapphire', price: 'N41,000', description: 'Iconic London dry gin.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp17', name: 'Absolut Vodka (Big)', price: 'N38,000', description: 'Classic Swedish premium vodka.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp18', name: 'Ciroc Vodka', price: 'N80,000', description: 'Luxury grape-based vodka.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp19', name: 'Olmeca Tequila - White/Gold', price: 'N47,000', description: 'Premium Mexican tequila.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp20', name: 'Gordon\'s Gin (Big)', price: 'N12,000', description: 'Standard London dry gin.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp21', name: 'Gordon\'s Gin (Small)', price: 'N4,000', description: 'Small bottle dry gin.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp22', name: 'Campari (Medium)', price: 'N30,000', description: 'Italian bitter liqueur.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp23', name: 'Campari (Small)', price: 'N12,000', description: 'Small size bitter liqueur.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp24', name: 'Baileys', price: 'N35,000', description: 'Premium Irish cream liqueur.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp25', name: 'Black Bullet', price: 'N5,000', description: 'Strong spirit beverage.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp26', name: 'Williams Lawson', price: 'N31,000', description: 'Blended scotch whiskey.', category: CategoryType.SPIRITS_LIQUEURS },
-  { id: 'dsp27', name: 'Skyy Vodka (Small)', price: 'N10,000', description: 'Premium vodka in small size.', category: CategoryType.SPIRITS_LIQUEURS },
+
+  // COGNAC
+  { id: 'dsp8', name: 'Hennessy XO', price: 'N790,000', description: 'Extra Old luxury cognac.', category: CategoryType.COGNAC },
+  { id: 'dsp9', name: 'Hennessy VSOP', price: 'N205,000', description: 'Very Superior Old Pale cognac.', category: CategoryType.COGNAC },
+  { id: 'dsp10', name: 'Hennessy VS', price: 'N180,000', description: 'Very Special premium cognac.', category: CategoryType.COGNAC },
+  { id: 'dsp11', name: 'Martell Blue Swift', price: 'N185,250', description: 'Cognac finished in bourbon casks.', category: CategoryType.COGNAC },
+  { id: 'dsp12', name: 'Martell VS', price: 'N94,000', description: 'Elegant premium cognac.', category: CategoryType.COGNAC },
 ];

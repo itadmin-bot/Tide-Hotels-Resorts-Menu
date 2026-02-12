@@ -16,10 +16,17 @@ export enum CategoryType {
   SALADS = 'Salads',
   EXTRAS = 'Extras',
   DESSERTS = 'Desserts',
-  SOFT_DRINKS = 'Soft Drinks & Juices',
+  COCKTAILS = 'Cocktails',
+  TIDE_SIGNATURES = 'Tide Signatures',
+  MOCKTAILS = 'Mocktails',
+  SHOTS = 'Shots',
+  MILKSHAKES = 'Milkshakes',
+  SMOOTHIES = 'Smoothies',
+  SOFT_DRINKS = 'Soft Drinks',
   BEERS_STOUTS = 'Beers & Stouts',
   WINES = 'Wines',
-  SPIRITS_LIQUEURS = 'Spirits & Liqueurs'
+  SPIRITS_LIQUEURS = 'Whiskey & Spirits',
+  COGNAC = 'Cognac'
 }
 
 export interface AppState {

@@ -33,10 +33,17 @@ const App: React.FC = () => {
   ];
 
   const drinkCategories = [
+    CategoryType.COCKTAILS,
+    CategoryType.TIDE_SIGNATURES,
+    CategoryType.MOCKTAILS,
+    CategoryType.SHOTS,
+    CategoryType.MILKSHAKES,
+    CategoryType.SMOOTHIES,
     CategoryType.SOFT_DRINKS,
     CategoryType.BEERS_STOUTS,
     CategoryType.WINES,
-    CategoryType.SPIRITS_LIQUEURS
+    CategoryType.SPIRITS_LIQUEURS,
+    CategoryType.COGNAC
   ];
 
   useEffect(() => {
@@ -47,6 +54,16 @@ const App: React.FC = () => {
       return () => clearTimeout(timer);
     }
   }, [isWelcome]);
+
+  // Handle automatic scrolling when category or section changes
+  useEffect(() => {
+    if (!isWelcome) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  }, [selectedCategory, activeSection, isWelcome]);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -117,7 +134,7 @@ const App: React.FC = () => {
         drinkCategories={drinkCategories}
       />
       
-      <main className="max-w-4xl mx-auto px-4 pt-4 animate-in fade-in duration-700">
+      <main id="menu-content" className="max-w-4xl mx-auto px-4 pt-4 animate-in fade-in duration-700">
         <MenuDisplay 
           items={filteredMenu} 
           selectedCategory={selectedCategory} 
