@@ -1,5 +1,5 @@
 
-import { MenuItem, CategoryType } from './types';
+import { MenuItem, CategoryType } from './types.ts';
 
 export const MENU_DATA: MenuItem[] = [
   // BREAKFAST

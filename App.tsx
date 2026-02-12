@@ -1,11 +1,11 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import WelcomeScreen from './components/WelcomeScreen';
-import MenuDisplay from './components/MenuDisplay';
-import Header from './components/Header';
-import FloatingActions from './components/FloatingActions';
-import { CategoryType, MenuItem } from './types';
-import { MENU_DATA } from './constants';
+import WelcomeScreen from './components/WelcomeScreen.tsx';
+import MenuDisplay from './components/MenuDisplay.tsx';
+import Header from './components/Header.tsx';
+import FloatingActions from './components/FloatingActions.tsx';
+import { CategoryType, MenuItem } from './types.ts';
+import { MENU_DATA } from './constants.tsx';
 
 export type MenuSection = 'Food' | 'Drinks';
 
@@ -16,7 +16,6 @@ const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<MenuSection>('Food');
   const [selectedCategory, setSelectedCategory] = useState<CategoryType | 'All'>('All');
 
-  // Define which categories belong to which section
   const foodCategories = [
     CategoryType.BREAKFAST,
     CategoryType.LUNCH_DINNER,
@@ -35,7 +34,6 @@ const App: React.FC = () => {
     CategoryType.SPIRITS_LIQUEURS
   ];
 
-  // Auto transition from welcome screen after 5 seconds
   useEffect(() => {
     if (isWelcome) {
       const timer = setTimeout(() => {
@@ -45,7 +43,6 @@ const App: React.FC = () => {
     }
   }, [isWelcome]);
 
-  // Handle Dark Mode toggle
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
@@ -54,7 +51,6 @@ const App: React.FC = () => {
     }
   }, [isDarkMode]);
 
-  // Reset category when switching sections
   const handleSectionChange = (section: MenuSection) => {
     setActiveSection(section);
     setSelectedCategory('All');
@@ -62,19 +58,16 @@ const App: React.FC = () => {
 
   const filteredMenu = useMemo(() => {
     return MENU_DATA.filter((item) => {
-      // 1. Filter by Section (Food or Drinks)
       const isFoodItem = foodCategories.includes(item.category);
       const isDrinkItem = drinkCategories.includes(item.category);
       
       if (activeSection === 'Food' && !isFoodItem) return false;
       if (activeSection === 'Drinks' && !isDrinkItem) return false;
 
-      // 2. Filter by Search
       const matchesSearch = 
         item.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
         item.description.toLowerCase().includes(searchTerm.toLowerCase());
       
-      // 3. Filter by Category
       const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;
       
       return matchesSearch && matchesCategory;

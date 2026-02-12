@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { MenuItem, CategoryType } from '../types';
+import { MenuItem, CategoryType } from '../types.ts';
 import { ChevronDown, ChevronUp, SearchX } from 'lucide-react';
 
 interface MenuDisplayProps {
@@ -23,7 +23,6 @@ const MenuDisplay: React.FC<MenuDisplayProps> = ({ items, selectedCategory, onCl
     }));
   };
 
-  // Group items by category
   const groupedItems = items.reduce((acc, item) => {
     if (!acc[item.category]) acc[item.category] = [];
     acc[item.category].push(item);

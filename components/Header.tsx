@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Search, Moon, Sun, Utensils, GlassWater } from 'lucide-react';
-import { CategoryType } from '../types';
-import { MenuSection } from '../App';
+import { CategoryType } from '../types.ts';
+import { MenuSection } from '../App.tsx';
 
 interface HeaderProps {
   searchTerm: string;
@@ -54,7 +54,6 @@ const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        {/* Section Tabs: Food vs Drinks */}
         <div className="flex bg-slate-100 dark:bg-navy-light p-1 rounded-2xl mb-4 border border-slate-200/50 dark:border-navy/50">
           <button 
             onClick={() => onSectionChange('Food')}
@@ -80,7 +79,6 @@ const Header: React.FC<HeaderProps> = ({
           </button>
         </div>
 
-        {/* Search Bar */}
         <div className="relative mb-4">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
           <input 
@@ -92,7 +90,6 @@ const Header: React.FC<HeaderProps> = ({
           />
         </div>
 
-        {/* Categories Bar */}
         <div className="flex items-center space-x-3 overflow-x-auto pb-3 pt-1">
           {categoriesToDisplay.map((cat) => (
             <button

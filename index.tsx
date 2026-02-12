@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './App.tsx';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -17,13 +17,9 @@ root.render(
 
 /**
  * Service Worker registration for PWA functionality.
- * Note: Service Workers require HTTPS and often do not work in cross-origin iframes 
- * or dynamic preview environments like AI Studio due to strict origin security policies.
  */
 const registerServiceWorker = () => {
   if ('serviceWorker' in navigator) {
-    // AI Studio previews are hosted in iframes and on scf.usercontent.goog.
-    // Attempting to register a Service Worker here often leads to origin mismatch errors.
     const isIframe = window.self !== window.top;
     const isPreview = window.location.hostname.includes('usercontent.goog') || 
                       window.location.hostname.includes('ai.studio');
@@ -39,9 +35,8 @@ const registerServiceWorker = () => {
           console.log('ServiceWorker registration successful with scope: ', registration.scope);
         })
         .catch((err) => {
-          // Log as info/warn rather than error for origin issues to keep the console clean in development
           if (err.name === 'SecurityError' || (err.message && err.message.includes('origin'))) {
-            console.info('Service Worker: Registration restricted by origin/security policy. This is expected in this environment.');
+            console.info('Service Worker: Registration restricted by origin/security policy.');
           } else {
             console.warn('ServiceWorker registration failed: ', err);
           }
