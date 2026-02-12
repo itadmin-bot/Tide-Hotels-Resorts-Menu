@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import WelcomeScreen from './components/WelcomeScreen.tsx';
 import MenuDisplay from './components/MenuDisplay.tsx';
 import Header from './components/Header.tsx';
 import FloatingActions from './components/FloatingActions.tsx';
 import OrderSummary from './components/OrderSummary.tsx';
+import PriceNotice from './components/PriceNotice.tsx';
 import { CategoryType, MenuItem } from './types.ts';
 import { MENU_DATA } from './constants.tsx';
 
@@ -12,6 +12,7 @@ export type MenuSection = 'Food' | 'Drinks';
 
 const App: React.FC = () => {
   const [isWelcome, setIsWelcome] = useState(true);
+  const [showPriceNotice, setShowPriceNotice] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [activeSection, setActiveSection] = useState<MenuSection>('Food');
@@ -50,6 +51,7 @@ const App: React.FC = () => {
     if (isWelcome) {
       const timer = setTimeout(() => {
         setIsWelcome(false);
+        setShowPriceNotice(true); // Trigger the notice after welcome
       }, 5000);
       return () => clearTimeout(timer);
     }
@@ -116,7 +118,10 @@ const App: React.FC = () => {
   };
 
   if (isWelcome) {
-    return <WelcomeScreen onComplete={() => setIsWelcome(false)} />;
+    return <WelcomeScreen onComplete={() => {
+      setIsWelcome(false);
+      setShowPriceNotice(true);
+    }} />;
   }
 
   return (
@@ -172,6 +177,10 @@ const App: React.FC = () => {
           onClose={() => setShowOrderSummary(false)}
           onUpdateQuantity={updateItemQuantity}
         />
+      )}
+
+      {showPriceNotice && (
+        <PriceNotice onClose={() => setShowPriceNotice(false)} />
       )}
     </div>
   );
