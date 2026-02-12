@@ -8,8 +8,11 @@ interface FloatingActionsProps {
 }
 
 const FloatingActions: React.FC<FloatingActionsProps> = ({ orderCount, onShowOrder }) => {
+  // Local Nigerian format for tel: link as specified: 09111111314
   const phoneNumber = "09111111314";
-  const internationalNumber = "2349111111314";
+  
+  // International format for WhatsApp wa.me link (Country code 234 + number without leading 0)
+  const whatsappNumber = "2349111111314";
 
   const handleCallNow = () => {
     window.location.href = `tel:${phoneNumber}`;
@@ -17,7 +20,7 @@ const FloatingActions: React.FC<FloatingActionsProps> = ({ orderCount, onShowOrd
 
   const handleWhatsAppOrder = () => {
     const message = encodeURIComponent("I would like to order from Tide' Hotels & Resorts.");
-    window.open(`https://wa.me/${internationalNumber}?text=${message}`, '_blank');
+    window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
 
   return (
@@ -29,7 +32,7 @@ const FloatingActions: React.FC<FloatingActionsProps> = ({ orderCount, onShowOrd
           title="Show Order"
         >
           <ClipboardList size={24} />
-          <span className="hidden md:inline font-bold">Show Order</span>
+          <span className="hidden md:inline font-bold uppercase text-[10px] tracking-widest">Show Order</span>
           <span className="absolute -top-1 -right-1 w-6 h-6 bg-navy text-gold text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-gold shadow-md">
             {orderCount}
           </span>
@@ -42,7 +45,7 @@ const FloatingActions: React.FC<FloatingActionsProps> = ({ orderCount, onShowOrd
         title="Order via WhatsApp"
       >
         <MessageSquare size={24} />
-        <span className="hidden md:inline font-medium">WhatsApp Order</span>
+        <span className="hidden md:inline font-bold uppercase text-[10px] tracking-widest">WhatsApp Order</span>
       </button>
 
       <button 
@@ -51,7 +54,7 @@ const FloatingActions: React.FC<FloatingActionsProps> = ({ orderCount, onShowOrd
         title="Call Now"
       >
         <Phone size={24} className="animate-pulse" />
-        <span className="hidden md:inline font-medium">Call to Order</span>
+        <span className="hidden md:inline font-bold uppercase text-[10px] tracking-widest">Call to Order</span>
       </button>
     </div>
   );
